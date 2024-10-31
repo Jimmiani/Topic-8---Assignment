@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Topic_8___Assignment
 {
@@ -67,7 +68,7 @@ namespace Topic_8___Assignment
         {
             Random generator = new Random();
             List <int> numbers = new List<int>();
-            int maxValue, minValue, numOfNumbers;
+            int maxValue, minValue, numOfNumbers, enteredNum, containNumber = 0;
             Console.Clear();
             Console.WriteLine("How many numbers do you need?");
             Console.Write("Numbers needed: ");
@@ -95,11 +96,27 @@ namespace Topic_8___Assignment
                 while (!int.TryParse(Console.ReadLine(), out maxValue))
                     Console.Write("Invalid Numeric Input. Try again: ");
             }
-            int randNum = generator.Next(minValue, maxValue);
             for (int i = 0; i < numOfNumbers; i++)
             {
-                numbers.Add(randNum);
+                numbers.Add(generator.Next(minValue, maxValue + 1));
             }
+            Console.WriteLine();
+            Console.Write("Here is the list: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                Console.Write(numbers[i] + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write("Enter a number: ");
+            while (!int.TryParse(Console.ReadLine(), out enteredNum))
+                Console.Write("Invalid Numeric Input. Try again: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                if (numbers[i] == enteredNum)
+                    containNumber++;
+            }
+            Console.WriteLine(enteredNum + " appeared in that list " + containNumber + " times!");
             Console.ReadLine();
         }
     }
