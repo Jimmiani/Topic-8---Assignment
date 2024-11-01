@@ -9,6 +9,8 @@ namespace Topic_8___Assignment
         {
             bool done = false;
             string choice = "";
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             while (!done)
             {
                 Console.Clear();
@@ -76,9 +78,9 @@ namespace Topic_8___Assignment
             Console.Write("Numbers needed: ");
             while (!int.TryParse(Console.ReadLine(), out numOfNumbers))
                 Console.Write("Invalid Numeric Input. Try again: ");
-            while (numOfNumbers < 0)
+            while (numOfNumbers <= 0)
             {
-                Console.WriteLine("Cannot be less than zero");
+                Console.WriteLine("Cannot be less than or equal to zero");
                 Console.Write("Try again: ");
                 while (!int.TryParse(Console.ReadLine(), out numOfNumbers))
                     Console.Write("Invalid Numeric Input. Try again: ");
@@ -166,6 +168,7 @@ namespace Topic_8___Assignment
             {
                 Console.Write(numbers[i] + ", ");
             }
+            Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Press 'ENTER' to return to main menu.");
             Console.ReadLine();
