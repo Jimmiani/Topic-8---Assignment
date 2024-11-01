@@ -62,15 +62,17 @@ namespace Topic_8___Assignment
             Console.WriteLine();
             Console.Write("Here's a random number, and it's corresponding colour: ");
             Console.WriteLine(randNum + ", " + colours[randNum - 1]);
+            Console.WriteLine();
+            Console.WriteLine("Press 'ENTER' to return to main menu.");
             Console.ReadLine();
         }
         public static void RandomNumbers()
         {
             Random generator = new Random();
             List <int> numbers = new List<int>();
-            int maxValue, minValue, numOfNumbers, enteredNum, containNumber = 0;
+            int maxValue, minValue, numOfNumbers, enteredNum, containNumber = 0, numReplaceZero;
             Console.Clear();
-            Console.WriteLine("How many numbers do you need?");
+            Console.WriteLine("How many numbers would you like this list to contain?");
             Console.Write("Numbers needed: ");
             while (!int.TryParse(Console.ReadLine(), out numOfNumbers))
                 Console.Write("Invalid Numeric Input. Try again: ");
@@ -108,7 +110,7 @@ namespace Topic_8___Assignment
             }
             Console.WriteLine();
             Console.WriteLine();
-            Console.Write("Enter a number: ");
+            Console.Write("Enter a number and I'll tell you how many times it appears in the list: ");
             while (!int.TryParse(Console.ReadLine(), out enteredNum))
                 Console.Write("Invalid Numeric Input. Try again: ");
             for (int i = 0; i < numOfNumbers; i++)
@@ -116,7 +118,56 @@ namespace Topic_8___Assignment
                 if (numbers[i] == enteredNum)
                     containNumber++;
             }
-            Console.WriteLine(enteredNum + " appeared in that list " + containNumber + " times!");
+            Console.WriteLine(enteredNum + " appeared in that list " + containNumber + " time(s)!");
+            Console.WriteLine();
+            Console.Write("Enter a number to replace with a zero: ");
+            while (!int.TryParse(Console.ReadLine(), out numReplaceZero))
+                Console.Write("Invalid Numeric Input. Try again: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                if (numbers[i] == numReplaceZero)
+                {
+                    numbers[i] = 0;
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine("Removing all " + numReplaceZero + "s and replacing with zeros.");
+            Console.Write("Here is the new list: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                Console.Write(numbers[i] + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Press 'ENTER' to continue.");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Resetting all numbers in list. List will now have only zeros.");
+            Console.Write("Here is the new list: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                numbers[i] = 0;
+            }
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                Console.Write(numbers[i] + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Press 'ENTER' to continue.");
+            Console.ReadLine();
+            Console.Clear();
+            Console.Write("Here is a new list with new random numbers: ");
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                numbers[i] = (generator.Next(minValue, maxValue));
+            }
+            for (int i = 0; i < numOfNumbers; i++)
+            {
+                Console.Write(numbers[i] + ", ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Press 'ENTER' to return to main menu.");
             Console.ReadLine();
         }
     }
