@@ -14,7 +14,7 @@ namespace Topic_8___Assignment
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine("Welcome to my super cool main menu! Select any option.");
+                Console.WriteLine("Welcome to my programming assignment for Lists! Select any option.");
                 Console.WriteLine();
                 Console.WriteLine("1. Colours");
                 Console.WriteLine("2. Numbers");
